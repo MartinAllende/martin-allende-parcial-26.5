@@ -261,6 +261,94 @@ int listarCensistas(pCensista censistas[],int tam)
 	return retorno;
 }
 
+int listarCensisitasConViviendas(pVivienda viviendas[],pCensista censistas[],int tamViviendas,int tamCensistas)
+{
+	int retorno = -1;
+	int i;
+	int j;
+
+	if(viviendas != NULL && censistas !=NULL && tamViviendas > 0 && tamCensistas > 0)
+	{
+		retorno = 0;
+		for(i=0;i<tamCensistas;i++)
+		{
+			printf("LEGAJO       NOMBRE       EDAD           TELEFONO\n");
+			printf(" %d            %s          %d                %d   \n",censistas[i].legajoCensista,censistas[i].nombre,censistas[i].edad,censistas[i].telefono);
+			printf("-----------------------------------------------------------------------------\n");
+			for(j=0;j<tamViviendas;j++)
+			{
+				if(viviendas[j].legajoCensista.legajoCensista == censistas[i].legajoCensista && viviendas[i].isEmpty == 0)
+				{
+
+					printf("ID           CALLE           CANTIDAD DE PERSONAS       CANTIDAD DE HABITACIONES        TIPO DE VIVIENDA\n");
+					printf("%d          %s                  %d                           %d                             %d          \n",viviendas[i].idVivienda,viviendas[i].calle,viviendas[i].cantidadDePersonas,viviendas[i].cantidadDeHabitaciones,viviendas[i].tipoDeVivienda);
+
+				}
+			}
+			printf("------------------------------------------------------------------------------\n");
+		}
+	}
+	else
+	{
+		printf("Error\n");
+	}
+
+	return retorno;
+}
+
+int mostrasCensistasConMasCensos(pVivienda viviendas[],pCensista censistas[],int tamViviendas,int tamCensistas)
+{
+	int retorno = -1;
+	int i;
+	int j;
+	int contador[tamCensistas];
+	int maximo;
+	int flag = 0;
+
+	for(i=0;i<tamCensistas;i++)
+	{
+		contador[i]=0;
+	}
+
+	if(viviendas != NULL && censistas !=NULL && tamViviendas > 0 && tamCensistas > 0)
+	{
+		retorno = 0;
+
+		for(i=0;i<tamCensistas;i++)
+		{
+			for(j=0;j<tamViviendas;j++)
+			{
+				if(viviendas[j].legajoCensista.legajoCensista == censistas[i].legajoCensista && viviendas[i].isEmpty == 0)
+				{
+					contador[i]=contador[i]+1;
+				}
+			}
+		}
+
+		for(i=0;i<tamCensistas;i++)
+		{
+			if(flag == 0 || contador[i]>maximo)
+			{
+				flag = 1;
+				maximo = i;
+			}
+		}
+
+		printf("el Censista con mas censos es: \n");
+		printf(" %d            %s          %d                %d   \n",censistas[maximo].legajoCensista,censistas[maximo].nombre,censistas[maximo].edad,censistas[maximo].telefono);
+
+	}
+	else
+	{
+		printf("Error\n");
+	}
+
+
+
+
+	return retorno;
+}
+
 
 
 

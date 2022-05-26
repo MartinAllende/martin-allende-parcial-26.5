@@ -58,5 +58,9 @@ int listarViviendas(pVivienda viviendas[],int tam);
  */
 int listarCensistas(pCensista censistas[],int tam);
 
+int listarCensisitasConViviendas(pVivienda viviendas[],pCensista censistas[],int tamViviendas,int tamCensistas);
+
+int mostrasCensistasConMasCensos(pVivienda viviendas[],pCensista censistas[],int tamViviendas,int tamCensistas);
+
 
 #endif /* FUNCIONES_H_ */

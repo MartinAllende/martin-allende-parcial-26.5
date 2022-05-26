@@ -31,7 +31,7 @@ int main(void)
 
 	do
 	{
-		retorno = getNumero(&opcion,"ingrese su opcion\n1. Ingresar una vivienda\n2. Modificar una vivienda\n3. Eliminar una vivienda\n4. listar viviendas\n5. listar censistas\n6. salir\n",6,1);
+		retorno = getNumero(&opcion,"ingrese su opcion\n1. Ingresar una vivienda\n2. Modificar una vivienda\n3. Eliminar una vivienda\n4. listar viviendas\n5. listar censistas\n6. listar censistas con datos de las viviendas censadas\n7. mostra el o los censistas con mas censos realizados\n8. salir\n",8,1);
 		if(retorno == 0)
 		{
 			switch(opcion)
@@ -75,6 +75,25 @@ int main(void)
 				case 5:
 					listarCensistas(censistas,3);
 					break;
+				case 6:
+					if(flag != 0)
+					{
+						listarCensisitasConViviendas(viviendas,censistas,TAM,3);
+					}
+					else
+					{
+						printf("Primero debe ingresar al menos una vivienda\n");
+					}
+					break;
+				case 7:
+					if(flag != 0)
+					{
+						mostrasCensistasConMasCensos(viviendas,censistas,TAM,3);
+					}
+					else
+					{
+						printf("Primero debe ingresar al menos una vivienda\n");
+					}
 
 			}
 		}
@@ -83,7 +102,7 @@ int main(void)
 			printf("error al ingresar su opcion\n");
 		}
 
-	}while(opcion != 6);
+	}while(opcion != 8);
 
 
 
